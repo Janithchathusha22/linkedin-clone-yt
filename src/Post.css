@@ -1,0 +1,54 @@
+.post {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  }
+  
+  .post__header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .post__avatar {
+    margin-right: 10px;
+  }
+  
+  .post__info {
+    flex: 1;
+  }
+  
+  .post__info h2 {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  
+  .post__info p {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .post__time {
+    font-size: 11px;
+    color: lightgray;
+  }
+  
+  .post__body {
+    margin-top: 10px;
+  }
+  
+  .post__body p {
+    font-size: 14px;
+  }
+  
+  .post__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+  
+  .post__buttons .MuiSvgIcon-root {
+    margin-right: 5px;
+  }
+  
