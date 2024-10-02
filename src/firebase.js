@@ -1,9 +1,9 @@
-// Import the necessary Firebase modules
+// Import Firebase modules
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-// Firebase configuration object with your project's details
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDBvpBN5SCfO3fP4MvuSMYqM6-RGQu9E4M",
   authDomain: "nextlink-d6a96.firebaseapp.com",
@@ -13,14 +13,21 @@ const firebaseConfig = {
   appId: "1:954268513155:web:69be99a0bfa67ce2a27cb6"
 };
 
-// Initialize Firebase app with the configuration
+// Initialize Firebase app
 const firebaseApp = initializeApp(firebaseConfig);
 
-// Initialize Firestore (database service)
+// Initialize Firestore and Auth services
 const db = getFirestore(firebaseApp);
-
-// Initialize Firebase Authentication service
 const auth = getAuth(firebaseApp);
 
-// Export the auth and db instances for use in other files
+// Check if Firebase Authentication is working properly
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User is signed in:", user);
+  } else {
+    console.log("No user is signed in.");
+  }
+});
+
+// Export the instances for use in other parts of your app
 export { auth, db };

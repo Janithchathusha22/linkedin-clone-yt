@@ -1,43 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css';
-import Avatar from '@mui/material/Avatar';  // Import Avatar from Material-UI
-import sidebarbg from './assets/sidebarbg.jpeg';  // Import the sidebar background image
+import Avatar from '@mui/material/Avatar';
+import sidebarbg from './assets/sidebarbg.jpeg';
+import { LinkedIn, BusinessCenter, People, Event, Bookmark, MenuOpen, Menu } from '@mui/icons-material'; // Added Menu icons for toggling
 
 function Sidebar() {
-    const recentItem = (topic) => (
-        <div className='sidebar__recentItem'>
-            <span className='sidebar__hash'>#</span>
-            <p>{topic}</p>
+    // State for toggling minimized view
+    const [isMinimized, setIsMinimized] = useState(false);
+
+    const professionalItem = (icon, label) => (
+        <div className={`sidebar__item ${isMinimized ? 'minimized' : ''}`}>
+            {icon}
+            {!isMinimized && <p>{label}</p>}
         </div>
     );
 
     return (
-        <div className='sidebar'>
+        <div className={`sidebar ${isMinimized ? 'sidebar--minimized' : ''}`}>
+            {/* Toggle button to minimize/maximize the sidebar */}
+            <div className='sidebar__toggle' onClick={() => setIsMinimized(!isMinimized)}>
+                {isMinimized ? <Menu /> : <MenuOpen />}
+            </div>
+
             <div className='sidebar__top'>
                 <img src={sidebarbg} alt="Sidebar Background" />
                 <Avatar className='sidebar__avatar' />
-                <h2>Janith Chathusha</h2>
-                <h4>janithchathusha@gmail.com</h4>
+                {!isMinimized && (
+                    <>
+                        <h2>Janith Chathusha</h2>
+                        <h4>janithchathusha@gmail.com</h4>
+                    </>
+                )}
             </div>
 
-            <div className='sidebar__stats'>
+            <div className={`sidebar__stats ${isMinimized ? 'hidden' : ''}`}>
                 <div className='sidebar__stat'>
-                    <p>Who viewed you</p>
-                    <p className='sidebar__statNumber'>2,666</p>
+                    <p>Profile viewers</p>
+                    <p className='sidebar__statNumber'>47</p>
                 </div>
                 <div className='sidebar__stat'>
-                    <p>Views on post</p>
-                    <p className='sidebar__statNumber'>2,448</p>
+                    <p>Post impressions</p>
+                    <p className='sidebar__statNumber'>221</p>
                 </div>
             </div>
 
-            <div className='sidebar__bottom'>
-                <p>Recent</p>
-                {recentItem('reactjs')}
-                {recentItem('programming')}
-                {recentItem('SoftwareEngineering')}
-                {recentItem('UI/UX Designer')}
-                {recentItem('Developer')}
+            <div className='sidebar__professional'>
+                <p className={`sidebar__label ${isMinimized ? 'hidden' : ''}`}>Professional</p>
+                {professionalItem(<BusinessCenter className='sidebar__icon' />, 'Jobs')}
+                {professionalItem(<People className='sidebar__icon' />, 'Network')}
+                {professionalItem(<Event className='sidebar__icon' />, 'Events')}
+                {professionalItem(<Bookmark className='sidebar__icon' />, 'Saved Items')}
+            </div>
+
+            <div className='sidebar__groups'>
+                <p className={`sidebar__label ${isMinimized ? 'hidden' : ''}`}>Groups</p>
+                {professionalItem(<BusinessCenter className='sidebar__icon' />, 'AWS Certification')}
+                {professionalItem(<People className='sidebar__icon' />, 'Data Scientist')}
+                {professionalItem(<BusinessCenter className='sidebar__icon' />, 'Python Devs')}
             </div>
         </div>
     );
