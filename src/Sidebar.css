@@ -1,135 +1,149 @@
 /* General Sidebar styling */
 .sidebar {
-    position: sticky;
-    top: 80px;
-    flex: 0.2;
-    border-radius: 10px;
-    background-color: #f3f2ef;
-    height: fit-content;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    position: sticky; /* Keep sidebar fixed in view */
+    top: 80px; /* Distance from top */
+    flex: 0.2; /* Take up 20% of the width */
+    max-width: 250px; /* Maximum width for the sidebar */
+    min-width: 60px; /* Minimum width for the sidebar */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f3f2ef; /* Light background */
+    height: fit-content; /* Fit content */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-bottom: 20px; /* Margin at the bottom */
+    overflow: hidden; /* Hide overflow content */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 .sidebar--minimized {
-    flex: 0.05;
-    width: 60px;
+    flex: 0.05; /* Take up 5% of the width when minimized */
+    width: 60px; /* Fixed width for minimized state */
 }
 
 .sidebar__top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 10px;
-    background-color: white;
-    border-radius: 10px 10px 0 0;
-    border: 1px solid lightgray;
-    transition: all 0.3s ease;
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Vertical alignment */
+    align-items: center; /* Center alignment */
+    padding: 20px 10px; /* Padding */
+    background-color: white; /* Background color */
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    border: 1px solid lightgray; /* Light border */
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 .sidebar__avatar {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Margin below avatar */
 }
 
 .sidebar__top img {
-    width: 100%;
-    height: 60px;
-    object-fit: cover;
-    margin-bottom: -30px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    width: 100%; /* Full width */
+    height: auto; /* Auto height */
+    max-height: 60px; /* Maximum height */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-top-left-radius: 10px; /* Rounded top left corner */
+    border-top-right-radius: 10px; /* Rounded top right corner */
 }
 
 .sidebar__top h2, .sidebar__top h4 {
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 .sidebar__top h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    font-weight: 600;
+    font-size: 18px; /* Main heading size */
+    margin-bottom: 5px; /* Margin below heading */
+    font-weight: 600; /* Bold weight */
 }
 
 .sidebar__top h4 {
-    font-size: 14px;
-    color: gray;
+    font-size: 14px; /* Subheading size */
+    color: gray; /* Color for subheading */
 }
 
 .sidebar__stats {
-    padding: 10px;
-    background-color: white;
-    border-radius: 0 0 10px 10px;
-    transition: all 0.3s ease;
+    padding: 10px; /* Padding */
+    background-color: white; /* Background color */
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 .sidebar__stat {
-    font-size: 13px;
-    color: gray;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
+    font-size: 13px; /* Stat text size */
+    color: gray; /* Stat text color */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    margin-bottom: 10px; /* Space below each stat */
 }
 
 .sidebar__statNumber {
-    font-weight: bold;
-    color: #0073b1;
+    font-weight: bold; /* Bold for numbers */
+    color: #0073b1; /* Color for stat numbers */
 }
 
 .sidebar__professional, .sidebar__groups {
-    padding: 10px;
-    background-color: white;
-    margin-top: 10px;
-    border-radius: 10px;
+    padding: 10px; /* Padding */
+    background-color: white; /* Background color */
+    margin-top: 10px; /* Margin on top */
+    border-radius: 10px; /* Rounded corners */
 }
 
 .sidebar__item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    cursor: pointer;
-    padding: 5px;
-    transition: all 0.3s ease;
+    display: flex; /* Flexbox for layout */
+    align-items: center; /* Center align items */
+    margin-bottom: 10px; /* Space below each item */
+    cursor: pointer; /* Pointer cursor */
+    padding: 5px; /* Padding for items */
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 .sidebar__item p {
-    margin-left: 10px;
-    font-size: 14px;
-    font-weight: 600;
+    margin-left: 10px; /* Space on the left */
+    font-size: 14px; /* Item text size */
+    font-weight: 600; /* Bold weight */
 }
 
 .sidebar__item:hover {
-    background-color: whitesmoke;
-    border-radius: 10px;
-    padding: 5px;
+    background-color: whitesmoke; /* Hover effect */
+    border-radius: 10px; /* Rounded corners on hover */
 }
 
 .sidebar__icon {
-    color: gray;
+    color: gray; /* Icon color */
 }
 
 .sidebar__label {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 14px; /* Label size */
+    font-weight: bold; /* Bold weight */
+    margin-bottom: 10px; /* Space below label */
 }
 
 .hidden {
-    display: none;
+    display: none; /* Hidden class */
 }
 
 /* Sidebar Toggle Button */
 .sidebar__toggle {
-    position: absolute;
-    top: 20px;
-    right: -20px;
-    background-color: #0073b1;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 5px;
-    color: white;
+    position: absolute; /* Positioning */
+    top: 20px; /* Distance from top */
+    right: -20px; /* Overlap on the right */
+    background-color: #0073b1; /* Toggle button color */
+    border-radius: 50%; /* Circle shape */
+    cursor: pointer; /* Pointer cursor */
+    padding: 5px; /* Padding */
+    color: white; /* Text color */
+    z-index: 10; /* Ensure it appears above other content */
 }
 
 .sidebar__toggle:hover {
-    background-color: #005582;
+    background-color: #005582; /* Darker on hover */
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        flex: 0.15; /* Adjust width for smaller screens */
+        max-width: 200px; /* Maximum width for sidebar on small screens */
+    }
+
+    .sidebar--minimized {
+        width: 50px; /* Minimized width on smaller screens */
+    }
 }

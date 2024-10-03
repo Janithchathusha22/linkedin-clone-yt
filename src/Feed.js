@@ -10,8 +10,12 @@ import Post from './Post';
 import { db } from './firebase';
 import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from 'firebase/firestore';
 import { formatDistanceToNow } from 'date-fns';  // Importing date-fns for relative time display
+import { useSelector } from 'react-redux'; // Import useSelector
+import { selectUser } from './features/UserSlice';
+import FlipMove from 'react-flip-move';
 
 function Feed() {
+  const user = useSelector(selectUser); // Use useSelector instead of userSelector
   const [input, setInput] = useState('');
   const [posts, setPosts] = useState([]);
 
@@ -34,10 +38,10 @@ function Feed() {
 
     try {
       await addDoc(collection(db, 'posts'), {
-        name: 'Janith Chathusa',  // Replace with dynamic user name if available
-        description: 'This is a test',  // Replace with dynamic description
+        name: user.displayName,  
+        description: user.email,  
         message: input,
-        photoUrl: '',
+        photoUrl: user.photoUrl || "",
         timestamp: serverTimestamp(),
       });
       setInput('');  // Clear input field after sending
@@ -65,6 +69,7 @@ function Feed() {
       </div>
 
       {/* Display posts */}
+      <FlipMove>
       {posts.map(({ id, data: { name, description, message, timestamp, photoUrl } }) => (
         <Post
           key={id}
@@ -75,6 +80,7 @@ function Feed() {
           timestamp={timestamp}
         />
       ))}
+      </FlipMove>
     </div>
   );
 }

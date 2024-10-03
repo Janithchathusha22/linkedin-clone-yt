@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react'; // Import forwardRef only once
 import './Post.css';
 import { Avatar } from '@mui/material';
 import InputOption from './InputOption';
@@ -8,9 +8,9 @@ import RepeatOutlinedIcon from '@mui/icons-material/RepeatOutlined';
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import { formatDistanceToNow } from 'date-fns';  // Relative time formatting
 
-function Post({ name, description, message, photoUrl, timestamp }) {
+const Post = forwardRef(({ name, description, message, photoUrl, timestamp }, ref) => {
   return (
-    <div className="post">
+    <div ref={ref} className="post">
       <div className="post__header">
         <Avatar src={photoUrl}>{name?.charAt(0)}</Avatar>
         <div className="post__info">
@@ -37,6 +37,6 @@ function Post({ name, description, message, photoUrl, timestamp }) {
       </div>
     </div>
   );
-}
+});
 
 export default Post;

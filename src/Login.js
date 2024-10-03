@@ -20,18 +20,19 @@ function Login() {
   // Handles the login process
   const loginToApp = async (e) => {
     e.preventDefault();
+
     setLoading(true); // Start loading
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userAuth = await signInWithEmailAndPassword(auth, email, password);
       dispatch(
         login({
-          email: userCredential.user.email,
-          uid: userCredential.user.uid,
-          displayName: userCredential.user.displayName,
-          photoURL: userCredential.user.photoURL,
+          email: userAuth.user.email,
+          uid: userAuth.user.uid,
+          displayName: userAuth.user.displayName,
+          profileUrl: userAuth.user.photoURL, // Correct this line
         })
       );
-      console.log("User logged in:", userCredential.user);
+      console.log("User logged in:", userAuth.user);
     } catch (error) {
       alert(error.message);
     } finally {
